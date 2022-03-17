@@ -6,25 +6,33 @@ public class CoinFlip {
 		
 		Scanner scnr = new Scanner(System.in);
 		double correctCount = 0;
+		int numberOfFlips = 0;
 				
 		System.out.println("Choose Heads or Tails");
-		String headsOrTailsGuess = scnr.next();
+		String headsOrTailsGuess = scnr.nextLine();
+		if(headsOrTailsGuess.equalsIgnoreCase("HEADS") || headsOrTailsGuess.equalsIgnoreCase("TAILS")) {
+		} else {
+			System.out.println("That is not a valid choice.  Please try again.");
+			return;
+		} 
 		
 		System.out.println("How many flips?");
-		int numberOfFlips = scnr.nextInt();
+		try { 
+			numberOfFlips = scnr.nextInt();
+		} catch (Exception e) {
+			System.out.println("That is not a valid input.  Please try again.");
+			return;
+		}
 		
 		for (int i = 0; i < numberOfFlips; i++) { 
-						
 			String result;
-			
 			if ((int) Math.round(Math.random()) == 0 ) {
 				result = "HEADS";
-			} 	else {
+			} else {
 				result = "TAILS";
 			}
 			
 			System.out.println(result);
-			
 			if (result.equalsIgnoreCase(headsOrTailsGuess)) {
 				correctCount++;
 			}
